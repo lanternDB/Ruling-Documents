@@ -1,80 +1,126 @@
-* {
+/*
+To Do List:
+Add [x] button to tabs so they can be closed.
+Add [+] circular-button to top nav so new tabs can be created - open to sections overview.
+Add custom scroll bars.
+fix default-browser-button behaviour.
+Add style to buttons.
+Re-style left nav bar.
+    change element to button element.
+    onclick - open document in new document-tab if a document title is clicked on.
+    onclick - scroll to header in current document if a document sub-header is clicked on.
+Add logo/document main title - look into top-banner
+Add sections overview page.
+Add top nav buttions: home, about author,
+    home: house icon, open new document tab to sections overview.
+    about: discord-esque profile drop-down, about me, contact information.
+Fix colors/theme, fix font family and sizing.
+
+Add drag-n-drop functionality to left nav bar and tabs.
+Add automatic grow and shrink functionality to left nav when documents are opened.
+Add automatic resizing to tabs when too many are being opened.
+Add dual-pane document windows.
+Add tooltips feature.
+Add URL functionality when document tabs are swapped to.
+
+Look into browser sizing and website sizing.
+Look into custom search feature.
+*/
+
+*{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
-.topNav {
-  width: 100%;
-
+.gridContainer{
+  display: grid;
+  height: 100vh;
+  grid-template-columns: 15% 85%;
+  grid-template-rows: 50px 50px auto;
+  grid-template-areas:
+    "header   header"
+    "leftNav  topNav"
+    "leftNav  main";
 }
-
-.topNav ul {
-  list-style-type: none;
+.header{
+  grid-area: header;
   overflow: hidden;
   background-color: #262526;
-  box-shadow: 0 0 20px rgba(0, 0, 255, 1);
 }
-
-.topNav li a {
-  float: left;
+.header ul li{
+  list-style-type: none;
+  float: right;
+}
+.header a{
+  display: inline-block;
   text-decoration: none;
+  padding: 16px 25px;
   color: #f3f3f3;
-  padding: 20px;
 }
-
-.topNav a:hover {
+.header a:hover{
   background-color: #7f8084;
 }
-
-.bodyContainer {
-  background: lightgreen;
-  position: absolute;
-  width: 100%;
-  top: 58px;
-  bottom: 0;
+.header a:active{
+  /*background-color: ;*/
 }
-
-.leftNav {
-  background: #262526;
-  position: relative;
+.leftNav{
+  grid-area: leftNav;
   overflow: auto;
-  float: left;
-  width: 15%;
-  height: 100%;
+  background: #262526;
 }
-
-.leftNav ul {
+.leftNav ul{
   list-style-type: none;
-  margin: 20px 0;
 }
-
-.leftNav a {
-  color: #f3f3f3;
+.leftNav a{
   text-decoration: none;
   display: block;
   padding: 15px;
+  color: #f3f3f3;
 }
-
-.leftNav a:hover {
+.leftNav a:hover{
   background: #7f8084;
 }
-
-.documentBody {
+.topNav{
+  grid-area: topNav;
   background: #d7d8da;
-  position: relative;
-  overflow: auto;
-  float: left;
-  width: 85%;
-  height: 100%;
 }
-
-.documentPage {
-  /*background: #f3f3f3;*/
-  background: white;
+.tabs{
+  text-decoration: none;
   position: relative;
-  margin: 0 auto;
-  width: 80%;
-  bottom: 0;
+  cursor: pointer;
+  border: none;
+  width: 200px;
+  height: 40px;
+  top: 10px;
+  background-color: #d7d8da;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  box-shadow: 3px -3px 2px rgba(0, 0, 0, .02);
+}
+.tabs:first-child{
+  /*border-top-left-radius: 0px;*/
+  margin-left: 10px;
+  /*box-shadow: 3px -3px 2px rgba(0, 0, 0, .05);*/
+}
+.activeTab{
+  /*Add color, fix shadow*/
+  /*box-shadow: 3px -3px 2px rgba(0, 0, 0, .05);*/
+}
+button:hover{
+  background-color: #c1c2c4;
+}
+button:active{
+
+}
+.main{
+  grid-area: main;
+  overflow: auto;
+  background: #f3f3f3;
+}
+.documentPage{
+  margin: 15px auto;
+  padding: 2.54cm;
+  width: 21.59cm;
   box-shadow: 0 0 20px rgba(0, 0, 0, .50);
+  background: white;
 }
